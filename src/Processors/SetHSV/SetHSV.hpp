@@ -32,18 +32,18 @@ struct SetHSV_Props: public Base::Props
 
   int val_min;
   int val_max;
-
+ 
   /*!
 	 * \copydoc Base::Props::load
 	 */
 	void load(const ptree & pt)
 	{
-    hue_min = pt.get("hue_min",300);
-    hue_max = pt.get("hue_max",360);
-    sat_min = pt.get("sat_min",30);
-    sat_max = pt.get("sat_max",230);
-    val_min = pt.get("val_min",50);
-    val_max = pt.get("val_max",200);
+    hue_min = pt.get("hue_min",0);
+    hue_max = pt.get("hue_max",255);
+    sat_min = pt.get("sat_min",0);
+    sat_max = pt.get("sat_max",255);
+    val_min = pt.get("val_min",0);
+    val_max = pt.get("val_max",255);
 	}
 
 	/*!
