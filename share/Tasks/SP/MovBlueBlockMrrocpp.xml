@@ -35,7 +35,7 @@
 
 	<ThresholdSP type="SetHSV" thread="ProcessingThread" group="s1">
 		<hue_min>5</hue_min>
-		<hue_max>16</hue_max>
+		<hue_max>32</hue_max>
 		<sat_min>20</sat_min>
 		<sat_max>255</sat_max>
 		<val_min>20</val_min>
@@ -119,16 +119,17 @@
 
 	<Event source="ColorConvertion.newImage"	destination="ThresholdSP.onNewImage"/>
 	<Event source="ThresholdSP.newImage"		destination="MorphClose.onNewImage"/>
+	<!--<Event source="ThresholdSP.newImage"		destination="PreviewWindow.onNewImage"/>	-->
 	<Event source="MorphClose.newImage"		destination="MorphOpen.onNewImage"/>
 	<Event source="MorphOpen.newImage"		destination="Segmentation.onNewImage"/>
 	<Event source="Segmentation.segmented"		destination="EdgeDetection.onSegmented"/>
 	<Event source="EdgeDetection.edgesDetected"	destination="LineSegments.onEdgesDetected"/>
 	<Event source="LineSegments.lineSegmentsEstimated"	destination="FindBlock.onLineSegmentsEstimated"/>
-	<!--<Event source="LineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage"/>-->
+	<Event source="LineSegments.lineSegmentsEstimated"	destination="PreviewWindow.onNewImage"/>
 	<Event source="FindBlock.blockLocated"          destination="VisualServoIB.onObjectLocated"/>
         <Event source="FindBlock.blockNotFound"         destination="VisualServoIB.onObjectNotFound"/>
         <Event source="VisualServoIB.readingReady"  	destination="Mrrocpp.onNewReading"/>
-	<Event source="FindBlock.blockLocated"		destination="PreviewWindow.onNewImage"/>	
+	<!--<Event source="FindBlock.blockLocated"		destination="PreviewWindow.onNewImage"/>	-->
 	<Event source="ImageSource.newImage"		destination="PreviewWindow.onNewImage"/>
 	
 </Events>
@@ -198,7 +199,7 @@
 	<FindBlock>
 		<in_lineSegmentsEstimated type="in" group="LinesEstimated"/>
 		<out_points type="out" group="DrawPoints"/>
-		<out_lines type="out" group="DrawLines"/>
+		<!--<out_lines type="out" group="DrawLines"/> -->
 		<out_imagePosition type="out" group="ImagePosition"/>
 	</FindBlock>
 
